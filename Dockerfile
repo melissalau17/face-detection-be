@@ -3,6 +3,7 @@ FROM python:3.12-slim-bullseye
 
 # Prevent interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONPATH=/app:$PYTHONPATH
 
 # Install system dependencies (for OpenCV, ONNX, etc.)
 RUN apt-get update && apt-get install -y --no-install-recommends \
