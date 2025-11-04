@@ -26,7 +26,7 @@ COPY data ./data
 COPY .env .env
 
 # Set Flask environment
-ENV FLASK_APP=app.app
+ENV FLASK_APP=app
 ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_RUN_PORT=5000
 
