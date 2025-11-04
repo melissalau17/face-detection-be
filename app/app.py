@@ -6,6 +6,7 @@ import jsonpickle
 import numpy as np
 from dotenv import load_dotenv
 from flask import Flask, Response, request
+import subprocess
 
 from facetools import FaceDetection, IdentityVerification, LivenessDetection
 
@@ -125,6 +126,13 @@ def liveness():
     response_pickled = jsonpickle.encode(response)
     return Response(response=response_pickled, status=status_code, mimetype="application/json")
 
+@app.route("/start_stream", methods=["POST"])
+def start_stream():
+    try:
+        subprocess.Popen(["python", "app/stream_client.py"])
+        return {"message": "Webcam streaming started."}, 200
+    except Exception as e:
+        return {"error": str(e)}, 500
 
 @app.route("/healthz", methods=["GET"])
 def health():
