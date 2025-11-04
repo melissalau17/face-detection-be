@@ -26,6 +26,9 @@ facebank_path = data_folder / facebank_name
 deepPix_checkpoint_path = data_folder / "checkpoints" / deeppix_name
 
 faceDetector = FaceDetection()
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+facebank_file = os.path.join(BASE_DIR, "data", "facebank.csv")
 identityChecker = IdentityVerification(
     checkpoint_path=resNet_checkpoint_path.as_posix(),
     facebank_path=facebank_path.as_posix(),
